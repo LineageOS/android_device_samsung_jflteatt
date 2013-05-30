@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "iIs3EuM",
+        "filename": "board-info.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 883
+      },
+      "writtenOn": "2013-05-30T22:32:49Z",
+      "side": 1,
+      "message": "Are you overdoing yourself here? bootloader is already checked in loki patch and flash. this is design for more flexiblity with the  dev models.",
+      "revId": "bca99f9dcbd985a03b47157fb7c48d5fc52aa8a5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
