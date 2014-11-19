@@ -20,15 +20,15 @@
 # details, it only fundamentally contains two inherit-product
 # lines, full and maguro, hence its name.
 #
- 
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
 # Inherit from jflteatt device
 $(call inherit-product, device/samsung/jflteatt/device.mk)
 
 # Set those variables here to overwrite the inherited values.
-PRODUCT_NAME := full_jflteuc
+PRODUCT_NAME := full_jflteatt
 PRODUCT_DEVICE := jflteatt
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
