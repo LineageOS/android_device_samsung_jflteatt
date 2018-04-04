@@ -14,3 +14,7 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_jflteatt.mk
+
+COMMON_LUNCH_CHOICES := \
+    lineage_jflteatt-eng \
+    lineage_jflteatt-userdebug
