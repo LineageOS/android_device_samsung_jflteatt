@@ -27,6 +27,9 @@ include device/samsung/jf-common/BoardConfigCommon.mk
 # inherit from the proprietary version
 -include vendor/samsung/jf-gsm-common/BoardConfigVendor.mk
 
+# Manifest
+DEVICE_MANIFEST_FILE += device/samsung/jflteatt/manifest.xml
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := jflteatt,jflte
 
