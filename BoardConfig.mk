@@ -32,3 +32,6 @@ TARGET_OTA_ASSERT_DEVICE := jflteatt,jflte
 
 # loki
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflteatt/releasetools
+
+# Kernel
+TARGET_KERNEL_VARIANT_CONFIG := jf_eur_defconfig
