@@ -31,3 +31,6 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/jflteatt/overlay
 
 # Inherit from jf-common
 $(call inherit-product, device/samsung/jf-common/jf-common.mk)
+
+# Call jflteatt system props
+$(call inherit-product, device/samsung/jflteatt/system_prop.mk)
