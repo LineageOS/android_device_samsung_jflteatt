@@ -30,6 +30,10 @@ PRODUCT_COPY_FILES += \
 ## device overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/jflteatt/overlay
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
+
 # Inherit from jf-common
 $(call inherit-product, device/samsung/jf-common/jf-common.mk)
 
