@@ -1,0 +1,2 @@
+add_lunch_combo lineage_jflteatt-eng
+add_lunch_combo lineage_jflteatt-userdebug
