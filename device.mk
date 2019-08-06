@@ -16,7 +16,7 @@
 #
 
 ## (2) Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/jf-gsm-common/jf-gsm-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/jflteatt/jflteatt-common-vendor.mk)
 
 PRODUCT_PACKAGES += \
     loki_tool \
