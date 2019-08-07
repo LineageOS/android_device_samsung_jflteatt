@@ -18,7 +18,7 @@
 set -e
 
 # Required!
-export DEVICE=jflte
+export DEVICE=jflteatt
 export DEVICE_COMMON=jf-common
 export VENDOR=samsung
 export DEVICE_BRINGUP_YEAR=2013

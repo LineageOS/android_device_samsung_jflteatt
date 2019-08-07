@@ -1,4 +1,4 @@
-# Copyright (C) 2013-2016, The CyanogenMod Project
+# Copyright (C) 2013-2016 The CyanogenMod Project
 # Copyright (C) 2017-2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,8 @@ PRODUCT_MANUFACTURER := Samsung
 PRODUCT_MODEL := SGH-I337
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-  PRODUCT_NAME=jflteuc \
-  TARGET_DEVICE=jflteatt \
-  PRIVATE_BUILD_DESC="jflteuc-user 5.0.1 LRX22C I337UCUGOC3 release-keys"
+    PRODUCT_NAME=jflteuc \
+    TARGET_DEVICE=jflteatt \
+    PRIVATE_BUILD_DESC="jflteuc-user 5.0.1 LRX22C I337UCUGOC3 release-keys"
 
 BUILD_FINGERPRINT := "samsung/jflteuc/jflteatt:5.0.1/LRX22C/I337UCUGOC3:user/release-keys" \

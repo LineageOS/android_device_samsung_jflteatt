@@ -1,6 +1,5 @@
-#
-# Copyright (C) 2011 The CyanogenMod Project
-# Copyright (C) 2019 The LineageOS Project
+# Copyright (C) 2013-2016 The CyanogenMod Project
+# Copyright (C) 2017-2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,29 +12,29 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-## (2) Also get non-open-source specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/jflteatt/jflteatt-common-vendor.mk)
+# Inherit from jf-common
+$(call inherit-product, device/samsung/jf-common/jf-common.mk)
 
+# Also get non-open-source specific aspects if available
+$(call inherit-product-if-exists, vendor/samsung/jflteatt/jflteatt-vendor.mk)
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += device/samsung/jflteatt/overlay
+
+# Loki
 PRODUCT_PACKAGES += \
     loki_tool \
     loki.sh \
     loki_bootloaders \
-    reovery-transform.sh
+    recovery-transform.sh
 
 PRODUCT_COPY_FILES += \
     device/samsung/jflteatt/releasetools/loki.sh:install/bin/loki.sh
-
-## device overlays
-DEVICE_PACKAGE_OVERLAYS += device/samsung/jflteatt/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
 
-# Inherit from jf-common
-$(call inherit-product, device/samsung/jf-common/jf-common.mk)
-
-# Call jflteatt system props
+# System Properties
 $(call inherit-product, device/samsung/jflteatt/system_prop.mk)
