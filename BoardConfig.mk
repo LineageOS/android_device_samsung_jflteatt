@@ -19,9 +19,6 @@
 # Inherit from proprietary vendor
 -include vendor/samsung/jflteatt/BoardConfigVendor.mk
 
-# Manifest
-DEVICE_MANIFEST_FILE += device/samsung/jflteatt/manifest.xml
-
 # Assert
 TARGET_OTA_ASSERT_DEVICE := jflteatt
 
