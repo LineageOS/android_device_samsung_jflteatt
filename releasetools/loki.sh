@@ -9,16 +9,26 @@
 #
 
 egrep -q -f /system/etc/loki_bootloaders /proc/cmdline
+
 if [ $? -eq 0 ];then
   echo '[*] Locked bootloader version detected.'
   export C=/tmp/loki_tmpdir
   mkdir -p $C
   dd if=/dev/block/platform/msm_sdcc.1/by-name/aboot of=$C/aboot.img
+
+  # Mount parittions
+  toybox mount /dev/block/bootdevice/by-name/system -t ext4 /mnt/system
+  toybox mount /dev/block/bootdevice/by-name/vendor -t ext4 /mnt/vendor
+
   echo '[*] Patching boot.img to with loki.'
   /system/bin/loki_tool patch boot $C/aboot.img /tmp/boot.img $C/boot.lok || exit 1
   echo '[*] Flashing modified boot.img to device.'
   /system/bin/loki_tool flash boot $C/boot.lok || exit 1
   rm -rf $C
+
+  # Unmount partitions
+  toybox umount /mnt/system
+  toybox umount /mnt/vendor
 else
   echo '[*] Unlocked bootloader version detected.'
   echo '[*] Flashing unmodified boot.img to device.'
