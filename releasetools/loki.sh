@@ -8,24 +8,28 @@
 # Run loki patch on boot.img for locked bootloaders, found in loki_bootloaders
 #
 
-egrep -q -f /system/etc/loki_bootloaders /proc/cmdline
 
-if [ $? -eq 0 ];then
+if getprop ro.bootloader | grep -q 'I337UCUAMDB\|I337UCUAMDL'; then
   echo '[*] Locked bootloader version detected.'
   export C=/tmp/loki_tmpdir
   mkdir -p $C
   dd if=/dev/block/platform/msm_sdcc.1/by-name/aboot of=$C/aboot.img
-
-  # Mount parittions
-  toybox mount /dev/block/bootdevice/by-name/system -t ext4 /system
-  echo '[*] Patching boot.img to with loki.'
-  /system/bin/loki_tool patch boot $C/aboot.img /tmp/boot.img $C/boot.lok || exit 1
-  echo '[*] Flashing modified boot.img to device.'
-  /system/bin/loki_tool flash boot $C/boot.lok || exit 1
+  if getprop ro.twrp.boot | grep -q 1; then
+    toybox mount /dev/block/bootdevice/by-name/system -t ext4 /system
+    echo '[*] Patching boot.img to with loki.'
+    /system/bin/loki_tool patch boot $C/aboot.img /tmp/boot.img $C/boot.lok || exit 1
+    echo '[*] Flashing modified boot.img to device.'
+    /system/bin/loki_tool flash boot $C/boot.lok || exit 1
+    toybox umount /system
+  else
+    toybox mount /dev/block/bootdevice/by-name/system -t ext4 /mnt/system
+    echo '[*] Patching boot.img to with loki.'
+    /mnt/system/system/bin/loki_tool patch boot $C/aboot.img /tmp/boot.img $C/boot.lok || exit 1
+    echo '[*] Flashing modified boot.img to device.'
+    /mnt/system/system/bin/loki_tool flash boot $C/boot.lok || exit 1
+    toybox umount /mnt/system
+  fi
   rm -rf $C
-  # Unmount partitions
-  toybox umount /system
-
 else
   echo '[*] Unlocked bootloader version detected.'
   echo '[*] Flashing unmodified boot.img to device.'
