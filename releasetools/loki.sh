@@ -9,7 +9,7 @@
 #
 
 
-if getprop ro.bootloader | grep -qE 'I337UCUAMDB\|I337UCUAMDL'; then
+if getprop ro.bootloader | grep -qE 'I337UCUAMDB|I337UCUAMDL'; then
   echo '[*] Locked bootloader version detected.'
   export C=/tmp/loki_tmpdir
   mkdir -p $C
